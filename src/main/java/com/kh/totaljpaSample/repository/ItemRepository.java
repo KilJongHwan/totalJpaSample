@@ -2,6 +2,8 @@ package com.kh.totaljpaSample.repository;
 
 import com.kh.totaljpaSample.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,4 +18,12 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findByPriceLessThan(Integer price);
     // OrderBy로 정렬
     List<Item> findAllByOrderByPriceDesc();
+    // JPQL 쿼리 작성 : SQL 유사한 객체지향 쿼리 언어
+    @Query("select i from Item i where i.itemDetail like %:itemDetail% order by i.price desc")
+    List<Item> priceSorting(@Param("itemDetail") String itemDetail);
+
+    // nativeQuery 사용
+    @Query(value = "select * from item i where i.item_detail like %:itemDetail% order by i.price desc",
+            nativeQuery = true)
+    List<Item> priceSortingNative(@Param("itemDetail") String itemDetail);
 }
