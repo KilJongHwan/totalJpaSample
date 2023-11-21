@@ -30,7 +30,7 @@ public class Item {
 
     @Lob
     @Column(nullable = false)
-    private int itemDetail; // 상품 상세 설명
+    private String itemDetail; // 상품 상세 설명
 
     @Enumerated(EnumType.STRING) // enum으로 정의된 값을 문자열로 DB에 저장
     private ItemSellStatus itemSellStatus;
