@@ -1,6 +1,8 @@
 package com.kh.totaljpaSample.entity;
 
 import com.kh.totaljpaSample.constant.OrderStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "orders")
 public class Order {
     @Id
