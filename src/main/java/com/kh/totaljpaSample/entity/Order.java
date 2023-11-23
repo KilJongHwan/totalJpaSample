@@ -31,7 +31,7 @@ public class Order {
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
 
-    @OneToMany(mappedBy = "order") // 연관관계의 주인이 아님을 표시
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) // 연관관계의 주인이 아님을 표시
     private List<OrderItem> orderItemList = new ArrayList<>();
 
 }
