@@ -104,7 +104,7 @@ class OrderRepositoryTest {
         OrderItem orderItem = orderItemRepository.findById(orderItemId).orElseThrow(EntityNotFoundException::new);
         log.warn(String.valueOf(orderItem.getOrder().getClass()));
         log.warn("================================================");
-        log.warn(String.valueOf(orderItem.getItem()));
+        orderItem.getOrder().getOrderDate();
         log.warn("================================================");
 
     }
